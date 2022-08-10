@@ -30,13 +30,16 @@ app.post('/todo', (req, res) => {
 
 // Read all (cRud) -- collection route
 app.get('/todo', (req, res) => {
-  Todo.readAll((err, todos) => {
-    if (err) {
-      res.sendStatus(400);
-    } else {
-      res.status(200).json(todos);
-    }
-  });
+  // Todo.readAll((err, todos) => {
+  //   if (err) {
+  //     res.sendStatus(400);
+  //   } else {
+  //     res.status(200).json(todos);
+  //   }
+  // });
+  Todo.readAll()
+  .then((output) => {res.status(200).json(output)})
+  .catch((err) => console.log(err));
 });
 
 // Read one (cRud) -- member route
